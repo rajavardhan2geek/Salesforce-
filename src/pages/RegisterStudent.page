@@ -1,0 +1,42 @@
+<apex:page controller="Loginclass" title="registration" docType="html-5.0" sidebar="false" showHeader="false" >
+   
+    <script type='text/javascript'>
+    
+      function validateuser()
+      {
+          var uname =document.getElementById("{!$Component.myform.mypageblk.mysection.username}").value;
+          if(uname =='')
+              alert('enter user name');
+          else
+              alert(uname);
+       }
+    
+    </script>
+    
+    
+    <apex:form id="myform">
+    <apex:pageBlock id="mypageblk" title=" Library Application">
+    		
+        <apex:pageBlockSection id="mysection" columns="2" >
+           <apex:facet name="username" >username</apex:facet> 
+         <apex:inputText id="username" value="{!username}"    onkeydown="validateuser();"         />
+            <apex:facet name="password" >password</apex:facet>
+    	 <apex:inputSecret maxlength="6" value="{!password}" />
+         
+        </apex:pageBlockSection>
+         
+        <apex:pageBlockButtons location="bottom">
+        
+         <apex:commandButton id="login" action="{!login}"  value="login"  />
+         <apex:commandButton id="cancel" action="{!cancel}" value="cancel" />
+         <apex:commandButton id="registerstudent" action="{!register}" value="register" />
+        </apex:pageBlockButtons>
+        
+       
+    </apex:pageBlock>
+      
+  </apex:form>
+   
+    <apex:relatedList list="Contacts" title="contacts list"/>
+    <c:VFCmp />
+</apex:page>

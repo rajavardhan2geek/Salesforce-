@@ -1,0 +1,30 @@
+<apex:page standardController="BookEntries__c" recordSetVar="books"  title="{!$User.FirstName} Books">
+    <apex:form >
+    
+    <apex:pageBlock id="booklist">
+      
+     <apex:pageBlockSection > 
+     
+   	  <p> search category </p>
+     <apex:inputText size="10"  id="searchcategory" />
+    <center> <apex:commandButton id="search" value="search"/></center>
+     
+      </apex:pageBlockSection>
+      <apex:pageBlockSection columns="2" title="{!$User.FirstName}{!$User.LastName}">
+          
+       
+          <apex:outputLabel ><b>Book Title:</b></apex:outputLabel>
+          <apex:outputLabel ><b>User :</b></apex:outputLabel>
+    <apex:repeat id="booklist" value="{!books}"  var="book"> 
+       
+       
+       <apex:outputText >  {!book.Book__r.Book_Title__c}</apex:outputText>
+        <apex:outputText >  {!book.User__c}</apex:outputText>
+       </apex:repeat> 
+        
+     </apex:pageBlockSection>
+      
+    </apex:pageBlock>
+    
+        </apex:form>
+</apex:page>

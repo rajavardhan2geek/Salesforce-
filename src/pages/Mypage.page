@@ -1,0 +1,25 @@
+<apex:page controller="sample" id="mypage">
+    <apex:form >            
+        
+        <apex:selectList id="selected_list" value="{!temp}" disabledClass="" size="1">
+            <apex:selectOptions value="{!selectoptions}"/>
+            <apex:actionSupport event="onchange" reRender="Details" action="{!find}"/>
+        </apex:selectList>
+        <br/>
+        
+        <apex:panelGroup >        
+            <apex:outputPanel id="Details">            
+                 The value based on select list value:  {!temp}
+               <apex:pageBlock >
+                <apex:pageBlockSection id="table">
+                
+               <apex:pageblocktable value="{!booklist}" var="book">
+                 <apex:outputField value="{!book.Name}"/>
+                </apex:pageblocktable>
+                </apex:pageBlockSection>
+                   </apex:pageBlock>
+            </apex:outputPanel>
+        </apex:panelGroup>
+         
+    </apex:form>
+</apex:page>

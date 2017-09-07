@@ -1,0 +1,15 @@
+<apex:page standardController="Contact">
+    
+    <p>
+        {!contact.Account.Name}
+    </p>
+      <apex:pageBlock >
+        <p>
+            u can access account{! $ObjectType.Contact.accessible}
+          </p>
+        <apex:outputText value="{!contact.Name}"> </apex:outputText>
+        
+        </apex:pageBlock>  
+  
+    
+</apex:page>

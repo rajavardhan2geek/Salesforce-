@@ -1,0 +1,17 @@
+<apex:page controller="cGoogleDriveAuthenticatwithSalesforce">
+    <apex:form >
+    <apex:pageBlock >
+
+    
+        
+        <apex:commandButton value="authenticate"  action="{!authenticate}"/>
+        
+       
+        
+
+    </apex:pageBlock>
+          <apex:pageBlock >
+        </apex:pageBlock>
+        
+                </apex:form>
+</apex:page>

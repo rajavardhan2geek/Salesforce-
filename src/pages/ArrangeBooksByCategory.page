@@ -1,0 +1,48 @@
+<apex:page standardController="Book__c" extensions="ViewByCategory" >
+   
+    <apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+    			<apex:outputLabel >Category:</apex:outputLabel>
+        		<apex:selectList id="selected_list" value="{!categoriestypes}" disabledClass="" size="1">
+            		<apex:selectOption itemLabel="None" itemValue="None"> </apex:selectOption>
+                    <apex:selectOptions value="{!selectoptions}"/>
+            <apex:actionSupport event="onchange" reRender="results" action="{!processselected}"/>
+        </apex:selectList>
+                    
+  </apex:pageBlockSection>               
+        		
+      
+       			
+              <apex:panelGroup id="results" >   
+                 <apex:outputPanel id="booktable"> 
+                
+        	
+                  
+                 <apex:pageBlockSection id="booksection" rendered="{!categoriestypes != null}" showHeader="true">
+                     <apex:pageblocktable value="{!booklist}" var="book" rendered="{!booklist.size !=0}"  >
+                		
+                        <apex:inputCheckbox />
+                         
+                         <apex:column value="{!book.Name}"/>
+                         <apex:column value="{!book.Book_Title__c}"/>
+                         <apex:column value="{!book.Author__c}"/>
+                         <apex:column value="{!book.BookType__c}"/>
+                         
+                          <apex:column value="{!book.Issued_Copies__c}"/>
+                         <apex:column value="{!book.No_Of_avail_Copies__c}"/>
+                         <apex:column value="{!book.Total_Copies__c}"/>
+                      
+                </apex:pageblocktable>
+                     <apex:outputText rendered="{!booklist.size ==0}"> No Books Found </apex:outputText>
+              </apex:pageBlockSection>    
+      
+     			  
+        
+     
+        </apex:outputPanel>
+        </apex:panelGroup>
+    </apex:pageBlock>
+        </apex:form>
+     
+</apex:page>

@@ -1,0 +1,6 @@
+<apex:page controller="TestApex" docType="html-5.0"> 
+
+<p>
+    {!username}ld
+    </p>
+</apex:page>

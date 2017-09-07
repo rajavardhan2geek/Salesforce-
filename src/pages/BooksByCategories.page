@@ -1,0 +1,40 @@
+<apex:page standardController="BookEntries__c" extensions="BooksSearch"  title="Book Issue EntryBook"   docType="html-5.0">
+  <apex:form >
+    	
+      <apex:pageBlock id="arrangecategories" >
+          <apex:pageMessages />
+      	<apex:pageBlockSection title="BookEntry">
+          	
+          		<apex:outputText > Book name</apex:outputText>
+        		<apex:selectList id="bookselected" value="{!booktype}"  size="1">
+            		<apex:selectOption itemLabel="None" itemValue="None"> </apex:selectOption>
+                    <apex:selectOptions value="{!bookstobeselected}" rendered="true"/>
+                   <apex:actionSupport event="onchange"  />
+                </apex:selectList>
+             </apex:pageBlockSection>
+           <apex:pageBlockSection rendered="{!booktype !=null}">
+            <apex:outputText > User name</apex:outputText>
+            	<apex:selectList id="userselected" value="{!userselect}"  size="1">
+            		<apex:selectOption itemLabel="None" itemValue="None"> </apex:selectOption>
+                    <apex:selectOptions value="{!userlist}" rendered="true"/>
+                   <apex:actionSupport event="onchange"   />
+                </apex:selectList>
+             </apex:pageBlockSection>
+
+    		 <apex:pageBlockSection id="datefields" columns="2" rendered="{!userselect != null}"> 
+            
+          		<apex:inputField id="issuedate"  value="{!BookEntries__c.Issue_Date__c}" required="true"/>
+            	<apex:inputField id="returndate"  value="{!BookEntries__c.Return_Date__c}"/> 
+       
+            </apex:pageBlockSection>  
+           
+      
+         <apex:pageBlockButtons >
+          
+          		<apex:commandbutton action="{!saverecord}" value="save"></apex:commandbutton>
+				 <apex:commandbutton action="{!cancel}" value="cancel"></apex:commandbutton>
+          </apex:pageBlockButtons>
+      </apex:pageBlock>
+    
+    </apex:form>
+</apex:page>

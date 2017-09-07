@@ -1,0 +1,8 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Help for IPL Fund Raisers Object for Managing IPL Team Members</h1>
+  This is your new Page
+  <p>Help for IPL Fund Raisers Object for Managing IPL Team Members</p>
+ 
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

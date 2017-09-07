@@ -1,0 +1,44 @@
+<apex:page standardController="Integration_Configuration__c" extensions="HttpReqResController">
+      <apex:form >    	
+    <apex:pageBlock >
+  
+    <apex:pageBlockSection >
+        
+ 
+		    
+        <apex:outputLabel >URL</apex:outputLabel>
+        <apex:inputText value="{!url}"> </apex:inputText>
+        <apex:outputLabel >method</apex:outputLabel>
+        <apex:selectList value="{!selectmethod}" multiselect="false" size="1">
+        	<apex:selectOptions value="{!method}"/>
+		</apex:selectList>
+        <apex:outputLabel >Authorization</apex:outputLabel>
+        <apex:selectList value="{!Authorizatiotype}" size="1">
+        <apex:selectOptions value="{!Authorizationheader}"/>
+        </apex:selectList>
+        
+        <apex:outputLabel >Consumer Key </apex:outputLabel>
+        <apex:inputText value="{!consumerkey}"> </apex:inputText>
+		<apex:outputLabel >Consumer Secret</apex:outputLabel>
+        <apex:inputText value="{!consumersecret}"> </apex:inputText>   
+         <apex:outputLabel >response</apex:outputLabel>
+        <apex:dataList value="{!response}" var="r">
+        <apex:outputText >{!r}</apex:outputText>
+       
+        </apex:dataList>
+ 		 <apex:outputText >{!resp}</apex:outputText>
+
+       
+     </apex:pageBlockSection>
+    
+           <apex:pageBlockButtons >
+          
+          		<apex:commandbutton action="{!save}" value="save"></apex:commandbutton>
+				 <apex:commandbutton action="{!cancel}" value="cancel"></apex:commandbutton>
+                <apex:commandbutton action="{!authorizeurl}" value="connect"></apex:commandbutton>
+          </apex:pageBlockButtons>
+      
+  
+    </apex:pageBlock>
+        </apex:form>    
+</apex:page>

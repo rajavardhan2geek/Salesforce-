@@ -1,0 +1,11 @@
+<apex:page controller="FacebookRequestController" >
+    
+    
+    <apex:form >
+    
+    
+        <apex:commandButton value="authenticate"  action="{!authenticate}"/>
+         <apex:actionPoller action="{!setaccesstoken}" interval="5" />
+          accesstoken {! access_token}
+    </apex:form>
+</apex:page>

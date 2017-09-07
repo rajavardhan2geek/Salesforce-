@@ -1,0 +1,69 @@
+<apex:page controller="SearchBooks"   showHeader="false" title="Search Books">
+    
+      
+    <apex:form >
+    	<apex:pageBlock >
+        <apex:pageBlockSection columns="2" >
+          <center>
+              
+           <apex:outputText >
+             Your Logged in {!$User.FirstName},{!$User.LastName}  
+              </apex:outputText>
+              <apex:outputText > Email:{!$User.Email}</apex:outputText>
+              <apex:outputText > Profile:{!$Profile.Name}</apex:outputText>
+       			 <apex:outputLabel > search category</apex:outputLabel>
+       			 <apex:inputText value="{!searchcategory}" id="searchcategory" />
+       
+           </center>
+        </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+            
+            <apex:commandButton action="{!doSearch}" value="Search Books"  reRender="booklist"/>
+            </apex:pageBlockButtons>
+     </apex:pageBlock>
+    <apex:pageBlock id="booklist">
+     <apex:pageBlockSection columns="7">
+  
+<apex:repeat value="{!results}" var="ct" rendered="{!results.size != null}">
+
+    
+    
+      <apex:inputCheckbox id="selectedbook"  value="{!selected}" /> 
+    <apex:outputText value="{! ct.Name }"  />
+    <apex:outputText value="{! ct.Book_Title__c }"/>
+    <apex:outputText value="{! ct.Total_Copies__c }"/>
+       <apex:outputText value="{! ct.No_Of_avail_Copies__c }"/>
+        <apex:outputText value="{! ct.Issued_Copies__c }"/>
+    	<apex:outputText value="{! ct.BookType__c }"/>
+    </apex:repeat>
+         
+ </apex:pageBlockSection>
+        <apex:pageBlockSection rendered="{!results.size == 0}"> 
+        
+        	<apex:pageMessage severity="INFO"> No Books Found</apex:pageMessage>
+        
+        </apex:pageBlockSection>
+                
+   <apex:pageBlockSection id="assignuserlist" rendered="{!results.size != 0}">
+            <apex:outputText > Assign Selected Books to  User </apex:outputText>
+            	<apex:selectList id="userselected" value="{!userselect}"  size="1" disabled="{!results.size == 0}">
+            		<apex:selectOption itemLabel="None" itemValue="None"> </apex:selectOption>
+                    <apex:selectOptions value="{!userlist}" rendered="true"/>
+                   <apex:actionSupport event="onchange"   />
+                </apex:selectList>
+             </apex:pageBlockSection>
+        
+        
+        
+      <apex:pageBlockButtons location="bottom" rendered="{!results.size != 0}">
+   <apex:commandButton id="step2" value="process selected" action="{!processselected}"/>              
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+    
+      
+        
+        
+        
+        </apex:form>
+    
+</apex:page>

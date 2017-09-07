@@ -1,0 +1,30 @@
+<apex:page showHeader="false" controller="HomePage" title="Login and Registration" docType="html-5.0" >
+    <apex:sectionHeader title="Library Management"  />
+    <apex:composition template="{!$Site.Template}"> 
+    <apex:define name="body">
+        
+        <apex:pageBlock >
+        
+        <apex:pageBlockSection columns="2">
+            <apex:form >
+             
+            <apex:outputLabel style="Italic">username </apex:outputLabel>
+            <apex:inputText id="username" value="{!username}"/>
+            <apex:outputLabel >password </apex:outputLabel>
+            <apex:inputSecret id="password"  value="{!password}"/>
+              
+          <apex:commandButton id="login" value="login" action="{!login}"/>
+                <apex:commandButton id="register" value="register" action="{!register}"/>
+                <apex:outputLabel >{!counter}</apex:outputLabel>
+              
+            </apex:form>
+            </apex:pageBlockSection>
+        
+        </apex:pageBlock>
+        
+        
+        </apex:define>
+    </apex:composition>
+    
+    
+</apex:page>

@@ -1,0 +1,20 @@
+<apex:page standardController="BookEntries__c" recordSetVar="bookentry">
+    
+    
+    <apex:pageBlock >
+    
+    
+    <apex:pageBlockSection >
+        <apex:form >
+            <apex:pageBlockTable value="{!bookentry}" var="a">
+            <apex:column value="{!a.Book__r.Name}"/>
+			<apex:inputText value="{!a.Book__r.Name}"/>
+            <apex:inputText value="{!a.Extend_return_date__c}"/>
+        	<apex:inputText value="{!a.Issue_Date__c}"/>
+            <apex:inputText value="{!a.Book__r.Name}"/>
+        	<apex:inputText value="{!a.User__r.Name}"/>    
+           </apex:pageBlockTable>
+        </apex:form>
+        </apex:pageBlockSection>
+    </apex:pageBlock>    
+</apex:page>

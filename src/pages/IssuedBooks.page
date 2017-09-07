@@ -1,0 +1,46 @@
+<apex:page standardController="BookEntries__c" extensions="StudentSelectionBook" title="{!$User.FirstName} Books"  docType="html-5.0">
+    <script type='text/javascript'>
+    
+	 function DynamicDatePicker(d_id)
+		{
+    DatePicker.pickDate(false,d_id.id,false);
+    alert('h');
+	}
+    </script>
+    <apex:form >
+    
+        
+    <apex:pageBlock id="booklist">
+      
+    
+      <apex:pageBlockSection columns="5" title="{!$User.FirstName}{!$User.LastName}">
+          
+       	 <apex:outputLabel ><b>Book Title:</b></apex:outputLabel>
+          <apex:outputLabel ><b>User :</b></apex:outputLabel>
+          <apex:outputLabel ><b>Issue Date:</b></apex:outputLabel>
+          <apex:outputLabel ><b>Return Date  :</b></apex:outputLabel>
+          <apex:outputLabel ><b>Request Extension of book</b></apex:outputLabel>
+           
+    
+    <apex:repeat id="booklist" value="{!bookentries}"  var="book"> 
+       
+       
+       <apex:outputText >  {!book.Book__r.Name}</apex:outputText>
+        <apex:outputText >  {!book.User__r.Name}</apex:outputText>
+        <apex:outputField value="{!book.Issue_Date__c}"  />
+        <apex:outputField value="{!book.Return_Date__c}"/>
+        <apex:outputLink value="https://rajavardhan-cloud-dev-ed--c.ap5.visual.force.com/{!book.Id}">Extend Request </apex:outputLink>
+       
+        
+        
+       </apex:repeat> 
+     </apex:pageBlockSection>
+      <apex:pageBlockButtons >
+          
+         
+          
+          </apex:pageBlockButtons>
+    </apex:pageBlock>
+    
+        </apex:form>
+</apex:page>

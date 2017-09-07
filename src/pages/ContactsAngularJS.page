@@ -1,0 +1,48 @@
+<apex:page applyBodyTag="false" applyHtmlTag="false" showHeader="false" standardController="Contact" recordSetVar="contacts">
+    
+    <html>
+        <head>
+        
+         <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"/>
+		<apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>        
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+		
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="Contact" jsShorthand="dbcontacts" fields="FirstName,LastName"/>
+    </apex:remoteObjects>
+     
+ </head>
+        <body >
+            
+            
+            <div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p> 
+</div>
+       <div class='container'>
+           	<table class="table table-hover table-responsive">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+        <apex:repeat var="c" value="{!contacts}"> 
+      <tr>
+		
+        <td>{!c.FirstName}</td>
+        <td>{!c.LastName}</td>
+        <td>{!c.Email}</td>
+         
+      </tr>
+        </apex:repeat> 
+        </tbody></table>
+            </div>     
+                
+            
+            </body>
+    </html>
+</apex:page>
